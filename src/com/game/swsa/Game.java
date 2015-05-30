@@ -364,9 +364,24 @@ public class Game {
 			int n;
 			switch (input) {
 			case "r":
-				System.out.println("How many runs would you like to make?");
+				System.out.println("What level would you like to max? @3600exp");
 				n = scanner.nextInt();
-				this.maxCount = n;
+				int noOfRuns = 0;
+				switch(n) {
+					case 2:
+						noOfRuns = 10;
+						break;
+					case 3:
+						noOfRuns = 23;
+						break;
+					case 4: 
+						noOfRuns = 53;
+						break;
+					default:
+						noOfRuns = n;
+						break;
+				}
+				this.maxCount = noOfRuns;
 				System.out.println("New batch confirmed, begin farming.");
 				this.startFarmMode();
 				break;
@@ -388,7 +403,7 @@ public class Game {
 	private void printRunTime() {
 		SimpleDateFormat sdf = new SimpleDateFormat("mm:ss");
 		Date date = new Date(end - start);
-		System.err.println("Time taken for run: " + sdf.format(date) + " Run count: " + this.counter);	
+		System.err.println("Time taken for run: " + sdf.format(date) + " Runs remaining: " + (this.maxCount - this.counter));	
 	}
 
 	public int getMaxCount() {

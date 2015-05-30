@@ -14,6 +14,7 @@ public class Main {
 		Scanner scanner = new Scanner(System.in);
 		String mode;
 		String level;
+		int noOfRuns = 0;
 		
 		System.out.println("What mode would you like to run?");
 		mode = scanner.next();
@@ -26,9 +27,23 @@ public class Main {
 				g.startHohMode(level);
 				break;
 			case "farm":
-				System.out.println("How many runs would you like to make?");
+				System.out.println("What level would you like to max? @3600exp");
 				n = scanner.nextInt();
-				g.setMaxCount(n);
+				switch(n) {
+					case 2:
+						noOfRuns = 10;
+						break;
+					case 3:
+						noOfRuns = 23;
+						break;
+					case 4: 
+						noOfRuns = 53;
+						break;
+					default:
+						noOfRuns = n;
+						break;
+				}
+				g.setMaxCount(noOfRuns);
 				g.startFarmMode();
 				break;
 			case "click":
